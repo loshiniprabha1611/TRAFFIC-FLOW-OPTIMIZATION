@@ -1,0 +1,31 @@
+import random 
+def calculate_signal_time(vehicle_count): 
+"""Return green light time based on vehicle count (20-60 seconds).""" 
+return max(20, min(vehicle_count * 2, 60)) 
+def is_emergency_vehicle(vehicle_type): 
+"""Check if the vehicle is an emergency (ambulance, firetruck, police).""" 
+return vehicle_type.strip().lower() in ['ambulance', 'firetruck', 'police'] 
+def simulate_traffic(): 
+"""Simulate traffic signal timings at 4 intersections.""" 
+intersections = ['North', 'South', 'East', 'West'] 
+for intersection in intersections: 
+vehicle_count = random.randint(5, 30) 
+print(f"{intersection}: {vehicle_count} vehicles - {calculate_signal_time(vehicle_count)} seconds green") 
+def check_emergency(): 
+"""Check if a vehicle is an emergency type.""" 
+vehicle_type = input("\nEnter vehicle type (e.g., ambulance, car): ").strip() 
+print("Emergency Detected: Green corridor activated!" if is_emergency_vehicle(vehicle_type) else "No 
+emergency: Normal traffic flow.") 
+def main(): 
+"""Main function for the AI Traffic Flow Optimization System.""" 
+print("AI Traffic Flow Optimization System")  
+while True: 
+print("\n1. Simulate Traffic Signals\n2. Check Emergency Vehicle\n3. Exit") 
+choice = input("Choose an option (1/2/3): ").strip() 
+if choice == '1': simulate_traffic() 
+elif choice == '2': check_emergency() 
+elif choice == '3': break 
+else: print("Invalid choice, try again.") 
+print("\nThank you for using the system! ") 
+if __name__ == '__main__': 
+main() 
